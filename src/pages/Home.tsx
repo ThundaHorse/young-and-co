@@ -1,6 +1,3 @@
-import React from 'react';
-import HeroSection from '../components/HeroSectionComponent';
-
 const Home = () => {
   return (
     <section className='bg-white dark:bg-gray-900'>

@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 const FooterComponent = () => {
   return (
     <footer className='bg-white rounded-lg shadow dark:bg-gray-900 m-4'>
