@@ -74,7 +74,7 @@ export default function HeaderComponent() {
             </Navbar.Link>
           ))}
 
-          <div className='pl-3'>
+          <div className='lg:pl-0 pl-3'>
             <Dropdown
               label='Solutions'
               inline>

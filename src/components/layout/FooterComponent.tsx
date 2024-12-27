@@ -4,7 +4,9 @@ import { Footer } from 'flowbite-react';
 
 const FooterComponent = () => {
   return (
-    <Footer container>
+    <Footer
+      container
+      style={{ boxShadow: 'none' }}>
       <div className='w-full text-center'>
         <div className='w-full justify-between sm:flex sm:items-center sm:justify-between flex flex-col'>
           <p className='mb-12 text-xs text-gray-500'>
@@ -15,7 +17,7 @@ const FooterComponent = () => {
             marketing, or recommending to another party any transaction or
             matter addressed herein.
           </p>
-          <Footer.LinkGroup>
+          <Footer.LinkGroup className='justify-center'>
             <Footer.Link href='/our-company'>Our Company</Footer.Link>
             <Footer.Link href='/guides'>Guides</Footer.Link>
             <Footer.Link href='/contact-us'>Contact</Footer.Link>

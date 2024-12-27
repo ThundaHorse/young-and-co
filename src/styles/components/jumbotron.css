@@ -19,3 +19,37 @@
 .info-body {
   text-align: left;
 }
+
+.hero-intro {
+  animation-name: slideFromBottom;
+  -webkit-animation-name: slideFromBottom;
+  animation-duration: 500ms;
+  -webkit-animation-duration: 500ms;
+  animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes slideFromBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10%);
+    -moz-transform: translateY(10%);
+    -ms-transform: translateY(10%);
+    -o-transform: translateY(10%);
+    transform: translateY(10%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    display: block;
+  }
+}
