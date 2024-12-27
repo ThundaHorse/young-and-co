@@ -1,4 +1,6 @@
-const About = () => {
+'use client';
+
+const OurCompany = () => {
   return (
     <div>
       <h2 className='text-4xl font-extrabold dark:text-white'>
@@ -37,4 +39,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default OurCompany;

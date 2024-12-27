@@ -5,8 +5,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
 import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
+import OurCompany from './pages/OurCompany';
+import Guides from './pages/Guides';
+import Contact from './pages/Contact';
+import Solutions from './pages/Solutions';
 
 // Layout
 import Layout from './components/layout/LayoutComponent';
@@ -16,7 +18,7 @@ import './index.css';
 
 const App: React.FC = () => {
   return (
-    <div className='container mx-auto flex flex-col h-screen'>
+    <div className='mx-auto flex flex-col h-screen'>
       <Layout>
         <BrowserRouter>
           <Routes>
@@ -24,11 +26,17 @@ const App: React.FC = () => {
               path='/'
               element={<Home />}></Route>
             <Route
-              path='/about'
-              element={<About />}></Route>
+              path='/solutions'
+              element={<Solutions />}></Route>
             <Route
-              path='/services'
-              element={<Services />}></Route>
+              path='/our-company'
+              element={<OurCompany />}></Route>
+            <Route
+              path='/guides'
+              element={<Guides />}></Route>
+            <Route
+              path='/contact-us'
+              element={<Contact />}></Route>
           </Routes>
         </BrowserRouter>
       </Layout>

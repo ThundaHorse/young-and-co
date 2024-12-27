@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className='min-h-screen flex flex-col'>
       <div
         id='header'
-        className='py-4'>
+        style={{ position: 'sticky', top: '0', width: '100%', zIndex: '99' }}>
         <HeaderComponent />
       </div>
       <div className='flex-grow'>
