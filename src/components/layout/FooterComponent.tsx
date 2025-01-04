@@ -21,6 +21,12 @@ const FooterComponent = () => {
             <Footer.Link href='/about'>About</Footer.Link>
             <Footer.Link href='/solutions'>Solutions</Footer.Link>
             <Footer.Link href='/contact-us'>Contact</Footer.Link>
+            {/* <Footer.Link
+              onClick={() =>
+                (window.location = 'mailto:daniel@youngcotax.com')
+              }>
+              Contact
+            </Footer.Link> */}
             <Footer.Link
               href='http://youngcotax.clientportal.com/'
               target='_blank'>

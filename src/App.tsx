@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
 import Home from './pages/Home';
-import About from './pages/OurCompany';
+import About from './pages/About';
 import Guides from './pages/Guides';
 import Contact from './pages/Contact';
 import Solutions from './pages/Solutions';
