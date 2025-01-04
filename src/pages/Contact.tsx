@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Checkbox, Label, Textarea, TextInput } from 'flowbite-react';
+import { Button, Label, Textarea, TextInput } from 'flowbite-react';
 
 const Contact = () => {
   return (
