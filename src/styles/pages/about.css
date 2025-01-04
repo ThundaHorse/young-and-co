@@ -1,0 +1,10 @@
+#about-intro {
+  /* background-image: url('/images/solutions-landing.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+#about-intro ul li {
+  list-style: inside;
+}

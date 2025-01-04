@@ -1,122 +1,64 @@
 'use client';
 
+import '../styles/pages/about.css';
+
 const About = () => {
   return (
     <>
       <section id='about-intro'>
-        <div className='px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56'>
-          <div
-            className='p-4 rounded-lg'
-            style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-            <h2 className='mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-5xl'>
-              About Us
-            </h2>
-            <p className='mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48'>
-              <b>We believe that your success is our success.</b>
-            </p>
+        <div className='py-8 px-4 mx-auto max-w-screen-xl'>
+          <div className='grid md:grid-cols-2 gap-8'>
+            <div className='rounded-lg p-6 md:p-8'>
+              <h2 className='text-gray-900 dark:text-white text-3xl font-extrabold mb-2'>
+                Young & Company
+              </h2>
+              <p className='text-lg font-normal text-gray-500 dark:text-gray-400 mb-4'>
+                Young & Company was founded with the mission statement of
+                building long-term relationships with our clients to help save
+                taxes for individual and businesses. We are a specialty tax firm
+                dedicated to helping our clients through personalized tax
+                services and strategies.
+              </p>
 
-            <p className='text-white'>
-              We serve the needs of every single client, whether they are a
-              large, multi-national corporation, a small to medium sized
-              company, or an individual.
-            </p>
+              <br />
+
+              <ul className='hero-intro'>
+                <li>We Serve all 50 States and Puerto Rico.</li>
+                <li>Experienced Team in Domestic and International Tax.</li>
+                <li>10 Years of Excellence.</li>
+                <li>Always Supporting Our Local Communities.</li>
+              </ul>
+            </div>
+            {/* <div className='about-intro-right rounded-lg p-8 md:p-12'></div> */}
           </div>
         </div>
       </section>
 
       <section id='community-involvement'>
         <p className='text-center'>Community</p>
-        <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16'>
+        <div className='py-8 px-4 mx-auto max-w-screen-xl'>
           <div className='grid md:grid-cols-2 gap-8'>
-            <div className='bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12'>
-              <a
-                href='#'
-                className='bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2'>
-                <svg
-                  className='w-2.5 h-2.5 me-1.5'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='currentColor'
-                  viewBox='0 0 18 18'>
-                  <path d='M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z' />
-                </svg>
-                Design
-              </a>
+            <div className='community-left rounded-lg p-8 md:p-12'>fdsa</div>
+            <div className='community-right rounded-lg p-6 md:p-8'>
               <h2 className='text-gray-900 dark:text-white text-3xl font-extrabold mb-2'>
-                Start with Flowbite Design System
+                Young & Company
               </h2>
               <p className='text-lg font-normal text-gray-500 dark:text-gray-400 mb-4'>
-                Static websites are now used to bootstrap lots of websites and
-                are becoming the basis for a variety of tools that even
-                influence both web designers and developers.
+                Young & Company was founded with the mission statement of
+                building long-term relationships with our clients to help save
+                taxes for individual and businesses. We are a specialty tax firm
+                dedicated to helping our clients through personalized tax
+                services and strategies.
               </p>
-              <a
-                href='#'
-                className='text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>
-                Read more
-                <svg
-                  className='w-3.5 h-3.5 ms-2 rtl:rotate-180'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 14 10'>
-                  <path
-                    stroke='currentColor'
-                    strokeLinejoin='round'
-                    strokeLinecap='round'
-                    strokeWidth='2'
-                    d='M1 5h12m0 0L9 1m4 4L9 9'
-                  />
-                </svg>
-              </a>
-            </div>
-            <div className='bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12'>
-              <a
-                href='#'
-                className='bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2'>
-                <svg
-                  className='w-2.5 h-2.5 me-1.5'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 20 16'>
-                  <path
-                    stroke='currentColor'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15'
-                  />
-                </svg>
-                Code
-              </a>
-              <h2 className='text-gray-900 dark:text-white text-3xl font-extrabold mb-2'>
-                Best react libraries around the web
-              </h2>
-              <p className='text-lg font-normal text-gray-500 dark:text-gray-400 mb-4'>
-                Static websites are now used to bootstrap lots of websites and
-                are becoming the basis for a variety of tools that even
-                influence both web designers and developers.
-              </p>
-              <a
-                href='#'
-                className='text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>
-                Read more
-                <svg
-                  className='w-3.5 h-3.5 ms-2 rtl:rotate-180'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 14 10'>
-                  <path
-                    stroke='currentColor'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M1 5h12m0 0L9 1m4 4L9 9'
-                  />
-                </svg>
-              </a>
+
+              <br />
+
+              <ul className='hero-intro'>
+                <li>We Serve all 50 States and Puerto Rico.</li>
+                <li>Experienced Team in Domestic and International Tax.</li>
+                <li>10 Years of Excellence.</li>
+                <li>Always Supporting Our Local Communities.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -124,98 +66,30 @@ const About = () => {
 
       <section id='partnerships'>
         <p className='text-center'>Partnerships</p>
-        <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16'>
+        <div className='py-8 px-4 mx-auto max-w-screen-xl'>
           <div className='grid md:grid-cols-2 gap-8'>
-            <div className='bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12'>
-              <a
-                href='#'
-                className='bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2'>
-                <svg
-                  className='w-2.5 h-2.5 me-1.5'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='currentColor'
-                  viewBox='0 0 18 18'>
-                  <path d='M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z' />
-                </svg>
-                Design
-              </a>
+            <div className='partnerships-left rounded-lg p-8 md:p-12'>
               <h2 className='text-gray-900 dark:text-white text-3xl font-extrabold mb-2'>
-                Start with Flowbite Design System
+                Young & Company
               </h2>
               <p className='text-lg font-normal text-gray-500 dark:text-gray-400 mb-4'>
-                Static websites are now used to bootstrap lots of websites and
-                are becoming the basis for a variety of tools that even
-                influence both web designers and developers.
+                Young & Company was founded with the mission statement of
+                building long-term relationships with our clients to help save
+                taxes for individual and businesses. We are a specialty tax firm
+                dedicated to helping our clients through personalized tax
+                services and strategies.
               </p>
-              <a
-                href='#'
-                className='text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>
-                Read more
-                <svg
-                  className='w-3.5 h-3.5 ms-2 rtl:rotate-180'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 14 10'>
-                  <path
-                    stroke='currentColor'
-                    strokeLinejoin='round'
-                    strokeLinecap='round'
-                    strokeWidth='2'
-                    d='M1 5h12m0 0L9 1m4 4L9 9'
-                  />
-                </svg>
-              </a>
+
+              <br />
+
+              <ul className='hero-intro'>
+                <li>We Serve all 50 States and Puerto Rico.</li>
+                <li>Experienced Team in Domestic and International Tax.</li>
+                <li>10 Years of Excellence.</li>
+                <li>Always Supporting Our Local Communities.</li>
+              </ul>
             </div>
-            <div className='bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12'>
-              <a
-                href='#'
-                className='bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2'>
-                <svg
-                  className='w-2.5 h-2.5 me-1.5'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 20 16'>
-                  <path
-                    stroke='currentColor'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15'
-                  />
-                </svg>
-                Code
-              </a>
-              <h2 className='text-gray-900 dark:text-white text-3xl font-extrabold mb-2'>
-                Best react libraries around the web
-              </h2>
-              <p className='text-lg font-normal text-gray-500 dark:text-gray-400 mb-4'>
-                Static websites are now used to bootstrap lots of websites and
-                are becoming the basis for a variety of tools that even
-                influence both web designers and developers.
-              </p>
-              <a
-                href='#'
-                className='text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>
-                Read more
-                <svg
-                  className='w-3.5 h-3.5 ms-2 rtl:rotate-180'
-                  aria-hidden='true'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 14 10'>
-                  <path
-                    stroke='currentColor'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M1 5h12m0 0L9 1m4 4L9 9'
-                  />
-                </svg>
-              </a>
-            </div>
+            <div className='partnerships-right rounded-lg p-6 md:p-8'>fdsa</div>
           </div>
         </div>
       </section>
