@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
 import Home from './pages/Home';
-import OurCompany from './pages/OurCompany';
+import About from './pages/OurCompany';
 import Guides from './pages/Guides';
 import Contact from './pages/Contact';
 import Solutions from './pages/Solutions';
@@ -29,8 +29,8 @@ const App: React.FC = () => {
               path='/solutions'
               element={<Solutions />}></Route>
             <Route
-              path='/our-company'
-              element={<OurCompany />}></Route>
+              path='/about'
+              element={<About />}></Route>
             <Route
               path='/guides'
               element={<Guides />}></Route>

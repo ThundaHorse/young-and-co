@@ -1,12 +1,13 @@
 'use client';
 
-import { Dropdown, Navbar } from 'flowbite-react';
+import { Button, Dropdown, Navbar } from 'flowbite-react';
+import '../../styles/components/header.css';
 
 const products = [
   {
-    name: 'Our Company',
-    description: 'Our Company',
-    href: '/our-company',
+    name: 'About',
+    description: 'About',
+    href: '/about',
   },
   {
     name: 'Guides',
@@ -18,38 +19,38 @@ const products = [
     description: 'Contact Page',
     href: '/contact-us',
   },
-  {
-    name: 'Solutions',
-    description: 'Solutions Page',
-    href: '/solutions',
-  },
 ];
 
 const solutionOptions = [
   {
-    name: 'Tax Filing',
-    id: 'tax-filing',
-    description: 'Lorem Ipsum Dalor Valor Epsilon',
+    name: 'Accounting',
+    id: 'accounting',
+    tab: 0,
   },
   {
-    name: 'Tax Strategy & Planning',
-    id: 'tax-strategy-and-planning',
-    description: 'Lorem Ipsum Dalor Valor Epsilon',
+    name: 'Bookkeeping',
+    id: 'bookkeeping',
+    tab: 1,
   },
   {
-    name: 'Bookkeeping & Accounting',
-    id: 'bookkeeping-and-accounting',
-    description: 'Lorem Ipsum Dalor Valor Epsilon',
+    name: 'Taxes',
+    id: 'taxes',
+    tab: 2,
   },
   {
-    name: 'Business Formation',
-    id: 'business-formation',
-    description: 'Lorem Ipsum Dalor Valor Epsilon',
+    name: 'Formation',
+    id: 'formation',
+    tab: 3,
   },
   {
-    name: 'Payroll Setup',
-    id: 'payroll-setup',
-    description: 'Lorem Ipsum Dalor Valor Epsilon',
+    name: 'Payroll',
+    id: 'payroll',
+    tab: 4,
+  },
+  {
+    name: 'Strategic Planning',
+    id: 'strategic-planning',
+    tab: 5,
   },
 ];
 
@@ -66,14 +67,6 @@ export default function HeaderComponent() {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          {products.map((item, idx) => (
-            <Navbar.Link
-              key={idx}
-              href={item.href}>
-              {item.name}
-            </Navbar.Link>
-          ))}
-
           <div className='lg:pl-0 pl-3'>
             <Dropdown
               label='Solutions'
@@ -82,16 +75,31 @@ export default function HeaderComponent() {
                 <Dropdown.Item key={idx}>
                   <div className='flex flex-col'>
                     <Navbar.Link
-                      href='#'
+                      href={`/solutions#${item.tab}`}
                       id={item.id}>
                       {item.name}
                     </Navbar.Link>
-                    <p>{item.description}</p>
                   </div>
                 </Dropdown.Item>
               ))}
             </Dropdown>
           </div>
+
+          {products.map((item, idx) => (
+            <Navbar.Link
+              key={idx}
+              href={item.href}>
+              {item.name}
+            </Navbar.Link>
+          ))}
+
+          <Button color='light'>
+            <a
+              href='http://youngcotax.clientportal.com/'
+              target='_blank'>
+              Login
+            </a>
+          </Button>
         </Navbar.Collapse>
       </Navbar>
 

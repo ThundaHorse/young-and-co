@@ -9,36 +9,42 @@ export default function JumbotronComponent() {
       icon: '/icons/offer/bank.png',
       title: 'Accounting',
       description: "You handle the business. We'll handle the numbers.",
+      tab: 0,
     },
     {
       icon: '/icons/offer/book.png',
       title: 'Bookkeeping',
       description:
         'Monthly bookkeeping to track your income and expenses to understand your financials.',
+      tab: 1,
     },
     {
       icon: '/icons/offer/tax-bag.png',
       title: 'Taxes',
       description:
         'Prepare your business tax returns, personal tax returns, and year-round tax guidance.',
+      tab: 2,
     },
     {
       icon: '/icons/offer/flow-chart.png',
       title: 'Formation',
       description:
         'Set up your new company, protect your assets, and make tax elections.',
+      tab: 3,
     },
     {
       icon: '/icons/offer/calendar.png',
       title: 'Payroll',
       description:
         'Streamline your payroll process to pay yourself and your employees.',
+      tab: 4,
     },
     {
       icon: '/icons/offer/king.png',
-      title: 'Planning',
+      title: 'Strategic Planning',
       description:
         'Meet with a specialist one-on-one every quarter to develop and implement a tailormade tax saving strategy.',
+      tab: 5,
     },
   ];
 
@@ -141,7 +147,7 @@ export default function JumbotronComponent() {
           {offerings.map((item, idx) => (
             <Card
               key={idx}
-              href='#'
+              href={`/solutions#${item.tab}`}
               className='max-w-sm'>
               <div className='h-full flex items-center justify-center'>
                 <img

@@ -1,6 +1,6 @@
 'use client';
 
-const OurCompany = () => {
+const About = () => {
   return (
     <>
       <section className='bg-white dark:bg-gray-900'>
@@ -224,4 +224,4 @@ const OurCompany = () => {
   );
 };
 
-export default OurCompany;
+export default About;
