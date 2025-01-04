@@ -37,6 +37,9 @@ const App: React.FC = () => {
             <Route
               path='/contact-us'
               element={<Contact />}></Route>
+            <Route
+              path='/solutions'
+              element={<Solutions />}></Route>
           </Routes>
         </BrowserRouter>
       </Layout>

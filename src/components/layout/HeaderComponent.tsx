@@ -18,6 +18,11 @@ const products = [
     description: 'Contact Page',
     href: '/contact-us',
   },
+  {
+    name: 'Solutions',
+    description: 'Solutions Page',
+    href: '/solutions',
+  },
 ];
 
 const solutionOptions = [
@@ -44,11 +49,6 @@ const solutionOptions = [
   {
     name: 'Payroll Setup',
     id: 'payroll-setup',
-    description: 'Lorem Ipsum Dalor Valor Epsilon',
-  },
-  {
-    name: 'Business Formation',
-    id: 'business-formation',
     description: 'Lorem Ipsum Dalor Valor Epsilon',
   },
 ];
