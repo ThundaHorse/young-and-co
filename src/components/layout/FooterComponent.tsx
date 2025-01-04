@@ -18,8 +18,8 @@ const FooterComponent = () => {
             matter addressed herein.
           </p>
           <Footer.LinkGroup className='justify-center'>
-            <Footer.Link href='/our-company'>Our Company</Footer.Link>
-            <Footer.Link href='/guides'>Guides</Footer.Link>
+            <Footer.Link href='/about'>About</Footer.Link>
+            <Footer.Link href='/solutions'>Solutions</Footer.Link>
             <Footer.Link href='/contact-us'>Contact</Footer.Link>
             <Footer.Link
               href='http://youngcotax.clientportal.com/'

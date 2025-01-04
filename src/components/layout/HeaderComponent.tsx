@@ -9,11 +9,11 @@ const products = [
     description: 'About',
     href: '/about',
   },
-  {
-    name: 'Guides',
-    description: 'Guides Page',
-    href: '/guides',
-  },
+  // {
+  //   name: 'Guides',
+  //   description: 'Guides Page',
+  //   href: '/guides',
+  // },
   {
     name: 'Contact',
     description: 'Contact Page',
