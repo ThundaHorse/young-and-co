@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from 'flowbite-react';
 import '../styles/pages/about.css';
 
 const About = () => {
@@ -34,7 +35,37 @@ const About = () => {
         </div>
       </section>
 
-      <section id='community-involvement'>
+      <hr />
+
+      <section id='temp-holder'>
+        <div className='text-center'>
+          <div className='p-16 call-to-action-about-us'>
+            <h2 className='mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl'>
+              Let's Work Together!
+            </h2>
+            <p className='mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48'>
+              Optimize Your Tax Savings
+            </p>
+
+            <p className='mb-12'>
+              Find out how much you can potentially save for the next tax
+              season!
+            </p>
+
+            <div className='flex justify-center'>
+              <Button
+                className='call-to-action-button'
+                pill>
+                <a href='/contact-us'>Contact</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      {/* <section id='community-involvement'>
         <p className='text-center'>Community</p>
         <div className='py-8 px-4 mx-auto max-w-screen-xl'>
           <div className='grid md:grid-cols-2 gap-8'>
@@ -63,6 +94,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <hr />
 
       <section id='partnerships'>
         <p className='text-center'>Partnerships</p>
@@ -94,7 +127,7 @@ const About = () => {
         </div>
       </section>
 
-      <hr />
+      <hr /> */}
     </>
   );
 };

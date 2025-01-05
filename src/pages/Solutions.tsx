@@ -133,7 +133,7 @@ const Solutions = () => {
           <div
             className='p-4 rounded-lg'
             style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-            <h2 className='mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-5xl'>
+            <h2 className='mb-4 text-5xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-5xl'>
               Solutions
             </h2>
             <p className='mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48'>
