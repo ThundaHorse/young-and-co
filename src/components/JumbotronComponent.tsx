@@ -176,9 +176,9 @@ export default function JumbotronComponent() {
           <div
             className='p-4 rounded-lg'
             style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-            <h2 className='mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl'>
+            <h1 className='mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl'>
               Strategic Tax Planning & Accounting Partners
-            </h2>
+            </h1>
             <p className='mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48'>
               We help our clients maximize their tax <b>tax savings</b>,{' '}
               <b>build wealth</b>, and to <b>secure their financial future.</b>

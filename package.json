@@ -24,6 +24,7 @@
     "react-router-dom": "^6.27.0",
     "sort-by": "^1.2.0",
     "vite-plugin-commonjs": "^0.10.3",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
