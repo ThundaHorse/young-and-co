@@ -171,6 +171,10 @@ export default function JumbotronComponent() {
 
   return (
     <>
+      <meta
+        name='description'
+        content='Strategic Tax Planning & Accounting Partners. We help our clients maximize their tax savings, build wealth, and to secure their financial future.'
+      />
       <section id='hero'>
         <div className='px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 hero-intro'>
           <div
