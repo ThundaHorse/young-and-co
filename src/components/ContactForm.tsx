@@ -111,11 +111,6 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
           name='form-name'
           value='contact'
         />
-        <input
-          type='hidden'
-          name='subject'
-          value='Contact Inquiry from %{form_name}'
-        />
         <div className='row formRow'>
           <div className='col-6'>
             <Label
