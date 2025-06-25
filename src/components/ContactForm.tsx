@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { Button, HelperText, Label, Textarea, TextInput } from 'flowbite-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -70,12 +70,12 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
 
       if (captchaValid) {
         // Use emailjs to email contact form data
-        await emailjs.send(
-          import.meta.env.VITE_SERVICE_ID,
-          import.meta.env.VITE_TEMPLATE_ID,
-          params,
-          import.meta.env.VITE_PUBLIC_KEY
-        );
+        // await emailjs.send(
+        //   import.meta.env.VITE_SERVICE_ID,
+        //   import.meta.env.VITE_TEMPLATE_ID,
+        //   params,
+        //   import.meta.env.VITE_PUBLIC_KEY
+        // );
 
         // Display success alert
         toggleAlert('Form submission was successful!', 'success');
@@ -94,12 +94,15 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
       setDisabled(false);
       // Reset contact form fields after submission
       reset();
+      setCaptchaValid(false);
     }
   };
 
   return (
     <div className='flex justify-center col'>
       <form
+        name='contact'
+        method='POST'
         id='contact-form'
         className='flex max-w-md flex-col gap-4'
         onSubmit={handleSubmit(onSubmit)}
