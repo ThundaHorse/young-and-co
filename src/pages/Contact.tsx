@@ -1,8 +1,8 @@
-'use client';
-
 import ContactForm from '../components/ContactForm';
 
 const Contact = () => {
+  const siteKey = import.meta.env.VITE_CAPTCHA_SITE_KEY;
+
   return (
     <>
       <section>
@@ -17,7 +17,7 @@ const Contact = () => {
       </section>
 
       <section>
-        <ContactForm />
+        <ContactForm siteKey={siteKey} />
       </section>
     </>
   );

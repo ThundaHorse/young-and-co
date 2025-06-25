@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
-import { Button, Label, Textarea, TextInput } from 'flowbite-react';
+// import emailjs from '@emailjs/browser';
+import { Button, HelperText, Label, Textarea, TextInput } from 'flowbite-react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
-const ContactForm = () => {
+interface ContactFormProps {
+  siteKey: string;
+}
+
+const ContactForm = ({ siteKey }: ContactFormProps) => {
   const {
     register,
     handleSubmit,
@@ -17,6 +22,7 @@ const ContactForm = () => {
     message: '',
     type: '',
   });
+  const [captchaValid, setCaptchaValid] = useState(false);
 
   // Shows alert message for form submission feedback
   const toggleAlert = (message: string, type: string) => {
@@ -28,34 +34,56 @@ const ContactForm = () => {
     }, 5000);
   };
 
+  const onChange = (value: string | null) => {
+    console.log(`Captcha value: ${value}`);
+
+    if (value) {
+      console.log('reCAPTCHA value:', value);
+      setCaptchaValid(true);
+      // Send value to your backend for verification
+    } else {
+      console.log('reCAPTCHA expired or failed.');
+    }
+  };
+
   // Function called on submit that uses emailjs to send email of valid contact form
   const onSubmit = async (data: {
     name: string;
     email: string;
     message: string;
   }) => {
-    // Destrcture data object
-    const { name, email, message } = data;
     try {
+      // Destrcture data object
+      const { name, email, message } = data;
+
       // Disable form while processing submission
       setDisabled(true);
+      // const params = {
+      //   from_name: name,
+      //   message: message,
+      //   from_email: email,
+      // };
 
-      const params = {
-        from_name: name,
-        message: message,
-        from_email: email,
-      };
+      if (captchaValid) {
+        console.log([name, email, message]);
+        console.log('Captcha is valid, proceeding with form submission');
 
-      // Use emailjs to email contact form data
-      await emailjs.send(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
-        params,
-        import.meta.env.VITE_PUBLIC_KEY
-      );
+        // Use emailjs to email contact form data
+        // await emailjs.send(
+        //   import.meta.env.VITE_SERVICE_ID,
+        //   import.meta.env.VITE_TEMPLATE_ID,
+        //   params,
+        //   import.meta.env.VITE_PUBLIC_KEY
+        // );
 
-      // Display success alert
-      toggleAlert('Form submission was successful!', 'success');
+        // // Display success alert
+        // toggleAlert('Form submission was successful!', 'success');
+      } else {
+        console.error('Captcha validation failed');
+        // Display error alert
+        toggleAlert('Please complete the reCAPTCHA.', 'danger');
+        return;
+      }
     } catch (e) {
       console.error(e);
       // Display error alert
@@ -69,7 +97,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center col'>
       <form
         id='contact-form'
         className='flex max-w-md flex-col gap-4'
@@ -89,6 +117,7 @@ const ContactForm = () => {
               type='text'
               placeholder='Name'
               required
+              color={errors.name ? 'failure' : 'gray'}
               {...register('name', {
                 required: {
                   value: true,
@@ -101,8 +130,9 @@ const ContactForm = () => {
               })}
             />
             {errors.name && (
-              // @ts-ignore
-              <span className='errorMessage'>{errors.name.message}</span>
+              <span className='errorMessage text-red-500'>
+                {errors.name?.message as string}
+              </span>
             )}
           </div>
           <div className='col-6'>
@@ -116,6 +146,7 @@ const ContactForm = () => {
               type='text'
               placeholder='example@example.com'
               required
+              color={errors.name ? 'failure' : 'gray'}
               {...register('email', {
                 required: true,
                 pattern:
@@ -124,7 +155,7 @@ const ContactForm = () => {
             />
 
             {errors.email && (
-              <span className='errorMessage'>
+              <span className='errorMessage text-red-500'>
                 Please enter a valid email address
               </span>
             )}
@@ -141,15 +172,42 @@ const ContactForm = () => {
             <Textarea
               id='message'
               placeholder='Your message...'
+              color={errors.name ? 'failure' : 'gray'}
               {...register('message', {
                 required: true,
               })}
             />
             {errors.message && (
-              <span className='errorMessage'>Please enter a message</span>
+              <span className='errorMessage text-red-500'>
+                Please enter a message
+              </span>
             )}
           </div>
         </div>
+
+        <ReCAPTCHA
+          sitekey={siteKey}
+          onChange={onChange}
+        />
+
+        {alertInfo.display && (
+          <HelperText>
+            <div
+              className={`alert alert-${alertInfo.type} alert-dismissible mt-5 text-red-500`}
+              role='alert'>
+              {alertInfo.message}
+              <button
+                type='button'
+                className='btn-close'
+                data-bs-dismiss='alert'
+                aria-label='Close'
+                onClick={() =>
+                  setAlertInfo({ display: false, message: '', type: '' })
+                } // Clear the alert when close button is clicked
+              ></button>
+            </div>
+          </HelperText>
+        )}
 
         <Button
           disabled={disabled}
@@ -157,22 +215,6 @@ const ContactForm = () => {
           Submit
         </Button>
       </form>
-      {alertInfo.display && (
-        <div
-          className={`alert alert-${alertInfo.type} alert-dismissible mt-5`}
-          role='alert'>
-          {alertInfo.message}
-          <button
-            type='button'
-            className='btn-close'
-            data-bs-dismiss='alert'
-            aria-label='Close'
-            onClick={() =>
-              setAlertInfo({ display: false, message: '', type: '' })
-            } // Clear the alert when close button is clicked
-          ></button>
-        </div>
-      )}
     </div>
   );
 };
