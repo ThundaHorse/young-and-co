@@ -77,6 +77,7 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
         //   import.meta.env.VITE_PUBLIC_KEY
         // );
 
+        console.log(params);
         // Display success alert
         toggleAlert('Form submission was successful!', 'success');
       } else {
