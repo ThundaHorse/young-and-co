@@ -114,18 +114,13 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
         <input
           type='hidden'
           name='subject'
-          value='Contact Inquiry from %{name}'
+          value='Contact Inquiry from %{form_name}'
         />
         <div className='row formRow'>
           <div className='col-6'>
             <Label
               htmlFor='name'
               value='Name'
-            />
-
-            <input
-              type='hidden'
-              name='name'
             />
             <TextInput
               id='name'
@@ -155,12 +150,8 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
               htmlFor='email1'
               value='Your email'
             />
-            <input
-              type='hidden'
-              name='email'
-            />
             <TextInput
-              id='name'
+              id='email1'
               type='text'
               placeholder='example@example.com'
               required
