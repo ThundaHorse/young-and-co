@@ -9,18 +9,18 @@ interface ContactFormProps {
   siteKey: string;
 }
 
-const ContactForm = ({ siteKey }: ContactFormProps) => {
-  interface ContactFormData {
-    name: string;
-    email: string;
-    message: string;
-  }
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
+const ContactForm = ({ siteKey }: ContactFormProps) => {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitted },
   } = useForm<ContactFormData>();
   const [disabled, setDisabled] = useState(false);
   const [alertInfo, setAlertInfo] = useState({
@@ -51,17 +51,16 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     }
   };
 
-  // Function called on submit that uses emailjs to send email of valid contact form
   const onSubmit = async (data: {
     name: string;
     email: string;
     message: string;
   }) => {
-    // Destrcture data object
     const { name, email, message } = data;
 
     // Disable form while processing submission
     setDisabled(true);
+
     const params = {
       from_name: name,
       message: message,
@@ -69,40 +68,29 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     };
 
     if (captchaValid) {
-      // Use emailjs to email contact form data
-      // await emailjs.send(
-      //   import.meta.env.VITE_SERVICE_ID,
-      //   import.meta.env.VITE_TEMPLATE_ID,
-      //   params,
-      //   import.meta.env.VITE_PUBLIC_KEY
-      // );
-
       try {
         await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
-            'form-name': 'contact', // Must match the name of your static form
+            'form-name': 'contact',
             ...params,
           }).toString(),
+        }).then(() => {
+          toggleAlert('Form submission was successful!', 'success');
+          setDisabled(false);
         });
 
-        // Display success alert
-        toggleAlert('Form submission was successful!', 'success');
-        setDisabled(false);
-        // Reset contact form fields after submission
-        setCaptchaValid(false);
         recaptchaRef.current?.reset();
         reset();
       } catch (error) {
         console.error('Captcha validation failed', error);
-        // Display error alert
+        recaptchaRef.current?.setState({ value: false });
         toggleAlert('Please complete the reCAPTCHA.', 'danger');
         return;
       }
     } else {
       console.error('Captcha validation failed');
-      // Display error alert
       toggleAlert('Please complete the reCAPTCHA.', 'danger');
       return;
     }
@@ -123,7 +111,6 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
           name='form-name'
           value='contact'
         />
-        {/* Row 1 of form */}
         <div className='row formRow'>
           <div className='col-6'>
             <Label
@@ -181,7 +168,6 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
           </div>
         </div>
 
-        {/* Row 3 of form */}
         <div className='row formRow'>
           <div className='col'>
             <Label
@@ -203,11 +189,22 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
             )}
           </div>
         </div>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={siteKey}
-          onChange={onChange}
-        />
+
+        <div className='row formRow'>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={siteKey}
+            onChange={onChange}
+          />
+
+          {!captchaValid && isSubmitted ? (
+            <span className='errorMessage text-red-500'>
+              Please complete the reCAPTCHA to submit the form.
+            </span>
+          ) : (
+            <></>
+          )}
+        </div>
 
         {alertInfo.display && (
           <HelperText>
