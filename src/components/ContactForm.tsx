@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+'use client';
+
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-// import emailjs from '@emailjs/browser';
 import { Button, HelperText, Label, Textarea, TextInput } from 'flowbite-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 

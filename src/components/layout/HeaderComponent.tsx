@@ -1,60 +1,34 @@
-'use client';
-
-import { Button, Dropdown, Navbar } from 'flowbite-react';
+import { Button, Dropdown, DropdownItem, Navbar } from 'flowbite-react';
 import '../../styles/components/header.css';
 
-const products = [
-  {
-    name: 'About',
-    description: 'About',
-    href: '/about',
-  },
-  // {
-  //   name: 'Guides',
-  //   description: 'Guides Page',
-  //   href: '/guides',
-  // },
-  {
-    name: 'Contact',
-    description: 'Contact Page',
-    href: '/contact-us',
-  },
-];
+interface SolutionOption {
+  name: string;
+  id: string;
+  tab: number;
+}
 
-const solutionOptions = [
-  {
-    name: 'Accounting',
-    id: 'accounting',
-    tab: 0,
-  },
-  {
-    name: 'Bookkeeping',
-    id: 'bookkeeping',
-    tab: 1,
-  },
-  {
-    name: 'Taxes',
-    id: 'taxes',
-    tab: 2,
-  },
-  {
-    name: 'Formation',
-    id: 'formation',
-    tab: 3,
-  },
-  {
-    name: 'Payroll',
-    id: 'payroll',
-    tab: 4,
-  },
-  {
-    name: 'Strategic Planning',
-    id: 'strategic-planning',
-    tab: 5,
-  },
-];
+interface Product {
+  name: string;
+  description: string;
+  href: string;
+}
 
-export default function HeaderComponent() {
+interface HeaderComponentProps {
+  solutionOptions: SolutionOption[];
+  products: Product[];
+}
+
+export default function HeaderComponent({
+  solutionOptions,
+  products,
+}: HeaderComponentProps) {
+  const handleClick = (itemId: string) => {
+    const solutionTab = solutionOptions.find(
+      (option) => option.id === itemId
+    )?.id;
+    window.location.href = `/solutions/${solutionTab}`;
+  };
+
   return (
     <>
       <Navbar rounded>
@@ -72,15 +46,16 @@ export default function HeaderComponent() {
               label='Solutions'
               inline>
               {solutionOptions.map((item, idx) => (
-                <Dropdown.Item key={idx}>
+                <DropdownItem key={idx}>
                   <div className='flex flex-col'>
-                    <Navbar.Link
-                      href={`/solutions#${item.tab}`}
+                    <span
+                      onClick={() => handleClick(item.id)}
+                      className='block text-sm'
                       id={item.id}>
                       {item.name}
-                    </Navbar.Link>
+                    </span>
                   </div>
-                </Dropdown.Item>
+                </DropdownItem>
               ))}
             </Dropdown>
           </div>
