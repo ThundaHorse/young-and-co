@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import { Button, HelperText, Label, Textarea, TextInput } from 'flowbite-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -10,12 +10,18 @@ interface ContactFormProps {
 }
 
 const ContactForm = ({ siteKey }: ContactFormProps) => {
+  interface ContactFormData {
+    name: string;
+    email: string;
+    message: string;
+  }
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<ContactFormData>();
   const [disabled, setDisabled] = useState(false);
   const [alertInfo, setAlertInfo] = useState({
     display: false,
@@ -35,14 +41,12 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
   };
 
   const onChange = (value: string | null) => {
-    console.log(`Captcha value: ${value}`);
-
     if (value) {
-      console.log('reCAPTCHA value:', value);
       setCaptchaValid(true);
       // Send value to your backend for verification
     } else {
       console.log('reCAPTCHA expired or failed.');
+      setCaptchaValid(false);
     }
   };
 
@@ -58,26 +62,23 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
 
       // Disable form while processing submission
       setDisabled(true);
-      // const params = {
-      //   from_name: name,
-      //   message: message,
-      //   from_email: email,
-      // };
+      const params = {
+        from_name: name,
+        message: message,
+        from_email: email,
+      };
 
       if (captchaValid) {
-        console.log([name, email, message]);
-        console.log('Captcha is valid, proceeding with form submission');
-
         // Use emailjs to email contact form data
-        // await emailjs.send(
-        //   import.meta.env.VITE_SERVICE_ID,
-        //   import.meta.env.VITE_TEMPLATE_ID,
-        //   params,
-        //   import.meta.env.VITE_PUBLIC_KEY
-        // );
+        await emailjs.send(
+          import.meta.env.VITE_SERVICE_ID,
+          import.meta.env.VITE_TEMPLATE_ID,
+          params,
+          import.meta.env.VITE_PUBLIC_KEY
+        );
 
-        // // Display success alert
-        // toggleAlert('Form submission was successful!', 'success');
+        // Display success alert
+        toggleAlert('Form submission was successful!', 'success');
       } else {
         console.error('Captcha validation failed');
         // Display error alert
@@ -101,9 +102,9 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
       <form
         id='contact-form'
         className='flex max-w-md flex-col gap-4'
-        // @ts-expect-error
         onSubmit={handleSubmit(onSubmit)}
-        noValidate>
+        noValidate
+        data-netlify='true'>
         {/* Row 1 of form */}
         <div className='row formRow'>
           <div className='col-6'>
