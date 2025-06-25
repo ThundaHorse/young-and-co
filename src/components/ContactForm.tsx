@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 // import emailjs from '@emailjs/browser';
 import { Button, HelperText, Label, Textarea, TextInput } from 'flowbite-react';
@@ -29,6 +29,7 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     type: '',
   });
   const [captchaValid, setCaptchaValid] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   // Shows alert message for form submission feedback
   const toggleAlert = (message: string, type: string) => {
@@ -56,46 +57,54 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     email: string;
     message: string;
   }) => {
-    try {
-      // Destrcture data object
-      const { name, email, message } = data;
+    // Destrcture data object
+    const { name, email, message } = data;
 
-      // Disable form while processing submission
-      setDisabled(true);
-      const params = {
-        from_name: name,
-        message: message,
-        from_email: email,
-      };
+    // Disable form while processing submission
+    setDisabled(true);
+    const params = {
+      from_name: name,
+      message: message,
+      from_email: email,
+    };
 
-      if (captchaValid) {
-        // Use emailjs to email contact form data
-        // await emailjs.send(
-        //   import.meta.env.VITE_SERVICE_ID,
-        //   import.meta.env.VITE_TEMPLATE_ID,
-        //   params,
-        //   import.meta.env.VITE_PUBLIC_KEY
-        // );
+    if (captchaValid) {
+      // Use emailjs to email contact form data
+      // await emailjs.send(
+      //   import.meta.env.VITE_SERVICE_ID,
+      //   import.meta.env.VITE_TEMPLATE_ID,
+      //   params,
+      //   import.meta.env.VITE_PUBLIC_KEY
+      // );
 
-        console.log(params);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            'form-name': 'contact', // Must match the name of your static form
+            ...params,
+          }).toString(),
+        });
+
         // Display success alert
         toggleAlert('Form submission was successful!', 'success');
-      } else {
-        console.error('Captcha validation failed');
+        setDisabled(false);
+        // Reset contact form fields after submission
+        setCaptchaValid(false);
+        recaptchaRef.current?.reset();
+        reset();
+      } catch (error) {
+        console.error('Captcha validation failed', error);
         // Display error alert
         toggleAlert('Please complete the reCAPTCHA.', 'danger');
         return;
       }
-    } catch (e) {
-      console.error(e);
+    } else {
+      console.error('Captcha validation failed');
       // Display error alert
-      toggleAlert('Uh oh. Something went wrong.', 'danger');
-    } finally {
-      // Re-enable form submission
-      setDisabled(false);
-      // Reset contact form fields after submission
-      reset();
-      setCaptchaValid(false);
+      toggleAlert('Please complete the reCAPTCHA.', 'danger');
+      return;
     }
   };
 
@@ -109,6 +118,11 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
         onSubmit={handleSubmit(onSubmit)}
         noValidate
         data-netlify='true'>
+        <input
+          type='hidden'
+          name='form-name'
+          value='contact'
+        />
         {/* Row 1 of form */}
         <div className='row formRow'>
           <div className='col-6'>
@@ -189,8 +203,8 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
             )}
           </div>
         </div>
-
         <ReCAPTCHA
+          ref={recaptchaRef}
           sitekey={siteKey}
           onChange={onChange}
         />
