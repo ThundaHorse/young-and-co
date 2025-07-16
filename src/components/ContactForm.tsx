@@ -20,13 +20,13 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitted },
+    formState: { errors, isSubmitted }
   } = useForm<ContactFormData>();
   const [disabled, setDisabled] = useState(false);
   const [alertInfo, setAlertInfo] = useState({
     display: false,
     message: '',
-    type: '',
+    type: ''
   });
   const [captchaValid, setCaptchaValid] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -64,7 +64,7 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     const params = {
       from_name: name,
       message: message,
-      from_email: email,
+      from_email: email
     };
 
     if (captchaValid) {
@@ -74,8 +74,8 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
             'form-name': 'contact',
-            ...params,
-          }).toString(),
+            ...params
+          }).toString()
         }).then(() => {
           toggleAlert('Form submission was successful!', 'success');
           setDisabled(false);
@@ -86,12 +86,15 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
       } catch (error) {
         console.error('Captcha validation failed', error);
         recaptchaRef.current?.setState({ value: false });
+        setDisabled(false);
         toggleAlert('Please complete the reCAPTCHA.', 'danger');
         return;
       }
     } else {
       console.error('Captcha validation failed');
       toggleAlert('Please complete the reCAPTCHA.', 'danger');
+      setDisabled(false);
+
       return;
     }
   };
@@ -126,12 +129,12 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
               {...register('name', {
                 required: {
                   value: true,
-                  message: 'Please enter your name',
+                  message: 'Please enter your name'
                 },
                 maxLength: {
                   value: 30,
-                  message: 'Please use 30 characters or less',
-                },
+                  message: 'Please use 30 characters or less'
+                }
               })}
             />
             {errors.name && (
@@ -154,7 +157,7 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
               {...register('email', {
                 required: true,
                 pattern:
-                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
               })}
             />
 
@@ -180,7 +183,7 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
               placeholder='Your message...'
               color={errors.name ? 'failure' : 'gray'}
               {...register('message', {
-                required: true,
+                required: true
               })}
             />
             {errors.message && (
